@@ -18,7 +18,7 @@ export const navLists = [
   { title: 'Vision', link: 'https://www.apple.com/apple-vision-pro/' },
   { title: 'AirPods', link: 'https://www.apple.com/airpods/' },
   { title: 'TV & Home', link: 'https://www.apple.com/tv-home/' },
-  { title: 'Entertainment', link: 'https://www.apple.com/entertainment/' },
+  // { title: 'Entertainment', link: 'https://www.apple.com/entertainment/' },
   { title: 'Accessories', link: 'https://www.apple.com/us/shop/goto/buy_accessories' },
   { title: 'Support', link: 'https://support.apple.com/?cid=gn-ols-home-hp-tab' },
 ];
