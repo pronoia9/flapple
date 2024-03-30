@@ -7,15 +7,15 @@ export const Navbar = () => {
       <nav className='w-full screen-max-width flex'>
         <img src={appleImg} alt='logo' width={14} height={18} />
 
-        <div className='flex flex-1 justify-center max-sm:hidden'>
+        <div className='flex gap-10 flex-1 justify-center max-sm:hidden'>
           {navLists.map((nav, index) => (
-            <a key={`nav-${index}`} href={nav.link} className=''>
+            <a key={`nav-${index}`} href={nav.link} className='text-sm text-gray hover:text-white transition-all'>
               {nav.title}
             </a>
           ))}
         </div>
 
-        <div>
+        <div className='flex items-baseline gap-7 max-sm:justify-end max-sm:flex-1'>
           <a href='https://www.apple.com/us/search'>
             <img src={searchImg} alt='search' width={18} height={18} />
           </a>
