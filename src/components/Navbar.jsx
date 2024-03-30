@@ -1,15 +1,16 @@
+import { navLists } from '../data';
 import { appleImg, bagImg, searchImg } from '../utils';
 
 export const Navbar = () => {
   return (
-    <header>
-      <nav>
+    <header className='w-full py-5 sm:px-10 px-5 flex justify-between items-center'>
+      <nav className='w-full screen-max-width flex'>
         <img src={appleImg} alt='logo' width={14} height={18} />
 
-        <div>
-          {['Mac', 'iPad', 'iPhone', 'Watch'].map((nav, index) => (
-            <a key={`nav-${index}`} href={`https://www.apple.com/${nav.toLowerCase()}/`} className=''>
-              {nav}
+        <div className='flex flex-1 justify-center max-sm:hidden'>
+          {navLists.map((nav, index) => (
+            <a key={`nav-${index}`} href={nav.link} className=''>
+              {nav.title}
             </a>
           ))}
         </div>
