@@ -7,8 +7,16 @@ export const VideoCarousel = () => {
   const videoRef = useRef([]),
     videoSpanRef = useRef([]),
     videoDivRef = useRef([]);
-  const [video, setVideo] = useState({ videoId: 0, isPlaying: false, isEnd: false, isLastVideo: false, startPlay: false });
+  const [video, setVideo] = useState({ videoId: 0, isPlaying: false, isEnd: false, isLastVideo: false, startPlay: false }),
+    [loadedData, setLoadedData] = useState([]);
   const { videoId, isPlaying, isEnd, isLastVideo, startPlay } = video;
+
+  useEffect(() => {
+    if (loadedData.length > 3) {
+      if (!isPlaying) videoRef.current[videoId].pause();
+      else startPlay && videoRef.current[videoId].play();
+    }
+  }, [startPlay, videoId, isPlaying, loadedData]);
 
   // TODO
   useEffect(() => {
