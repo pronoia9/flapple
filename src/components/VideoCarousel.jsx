@@ -115,7 +115,7 @@ export const VideoCarousel = () => {
                 <video
                   id='video'
                   ref={(el) => (videoRef.current[i] = el)}
-                  className={`${slide.id === 2 && 'translate-x-44'} pointer-events-none`}
+                  className={`${slide.id === 2 ? 'translate-x-44' : ''} pointer-events-none`}
                   playsInline
                   preload='auto'
                   muted
