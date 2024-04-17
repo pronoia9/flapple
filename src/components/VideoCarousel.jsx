@@ -14,8 +14,8 @@ export const VideoCarousel = () => {
               </div>
 
               <div className='absolute top-12 left-[5%] z-10'>
-                {slide.textLists.map((text, i) => (
-                  <p key={i} className='md:text-2xl text-xl font-medium'>
+                {slide.textLists.map((text, j) => (
+                  <p key={`slide-${i}-${j}`} className='md:text-2xl text-xl font-medium'>
                     {text}
                   </p>
                 ))}
