@@ -7,6 +7,7 @@ export const VideoCarousel = () => {
     videoSpanRef = useRef([]),
     videoDivRef = useRef([]);
   const [video, setVideo] = useState({ videoId: 0, isPlaying: false, isEnd: false, isLastVideo: false, startPlay: false });
+  const { videoId, isPlaying, isEnd, isLastVideo, startPlay } = video;
 
   return (
     <>
@@ -15,7 +16,7 @@ export const VideoCarousel = () => {
           <div key={slide.id} id='slider' className='sm:pr-20 pr-10'>
             <div className='video-carousel_container'>
               <div className='w-full h-full flex-center rounded-3xl overflow-hidden bg-black'>
-                <video id='video' playsInline preload='auto' muted>
+                <video ref={(el) => (videoRef.current[i] = el)} id='video' playsInline preload='auto' muted>
                   <source src={slide.video} type='video/mp4' />
                 </video>
               </div>
