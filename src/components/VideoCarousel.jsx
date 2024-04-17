@@ -16,13 +16,6 @@ export const VideoCarousel = () => {
   // video and indicator
   const { videoId, isPlaying, isEnd, isLastVideo, startPlay } = video;
 
-  useEffect(() => {
-    if (loadedData.length > 3) {
-      if (!isPlaying) videoRef.current[videoId].pause();
-      else startPlay && videoRef.current[videoId].play();
-    }
-  }, [startPlay, videoId, isPlaying, loadedData]);
-
   useGSAP(() => {
     // video animation to play the video when it is in the view
     gsap.to('#video', {
@@ -30,6 +23,13 @@ export const VideoCarousel = () => {
       onComplete: () => void setVideo((prev) => ({ ...prev, startPlay: true, isPlaying: true })),
     });
   }, [isEnd, videoId]);
+
+  useEffect(() => {
+    if (loadedData.length > 3) {
+      if (!isPlaying) videoRef.current[videoId].pause();
+      else startPlay && videoRef.current[videoId].play();
+    }
+  }, [startPlay, videoId, isPlaying, loadedData]);
 
   // TODO
   useEffect(() => {
