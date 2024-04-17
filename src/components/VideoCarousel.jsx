@@ -66,6 +66,8 @@ export const VideoCarousel = () => {
     }
   };
 
+  const handleLoadedMetaData = (i, e) => void setLoadedData((prev) => [...prev, e]);
+
   return (
     <>
       <div className='flex items-center'>
