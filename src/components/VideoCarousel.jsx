@@ -77,6 +77,7 @@ export const VideoCarousel = () => {
       if (isPlaying) gsap.ticker.add(animationUpdate); // ticker to update the progress bar
       else gsap.ticker.remove(animationUpdate); // remove the ticker when the video is paused (progress bar is stopped)
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [videoId, startPlay]);
 
   // vd id is the id for every video until id becomes number 3
