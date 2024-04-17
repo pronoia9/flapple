@@ -7,8 +7,11 @@ export const VideoCarousel = () => {
   const videoRef = useRef([]),
     videoSpanRef = useRef([]),
     videoDivRef = useRef([]);
+
   const [video, setVideo] = useState({ videoId: 0, isPlaying: false, isEnd: false, isLastVideo: false, startPlay: false }),
     [loadedData, setLoadedData] = useState([]);
+
+  // video and indicator
   const { videoId, isPlaying, isEnd, isLastVideo, startPlay } = video;
 
   useEffect(() => {
