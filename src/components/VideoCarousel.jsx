@@ -35,7 +35,27 @@ export const VideoCarousel = () => {
     return () => {};
   }, [videoId, startPlay]);
 
-  const handleProcess = () => {};
+  const handleProcess = (type, i) => {
+    switch (type) {
+      case 'video-end':
+        setVideo((prev) => ({ ...prev, isEnd: true, videoId: i + 1 }));
+        break;
+      case 'video-last':
+        setVideo((prev) => ({ ...prev, isLastVideo: true }));
+        break;
+      case 'video-reset':
+        setVideo((prev) => ({ ...prev, videoId: 0, isLastVideo: false }));
+        break;
+      case 'play':
+        setVideo((prev) => ({ ...prev, isPlaying: !prev.isPlaying }));
+        break;
+      case 'pause':
+        setVideo((prev) => ({ ...prev, isPlaying: !prev.isPlaying }));
+        break;
+      default:
+        return video;
+    }
+  };
 
   return (
     <>
@@ -81,7 +101,11 @@ export const VideoCarousel = () => {
 
         {/* play/pause button */}
         <button className='control-btn'>
-          <img src={isLastVideo ? replayImg : !isPlaying ? playImg : pauseImg} alt={isLastVideo ? 'replay' : !isPlaying ? 'play' : 'pause'} onClick={() => handleProcess(isLastVideo ? 'video-reset' : !isPlaying ? 'play' : 'pause')} />
+          <img
+            src={isLastVideo ? replayImg : !isPlaying ? playImg : pauseImg}
+            alt={isLastVideo ? 'replay' : !isPlaying ? 'play' : 'pause'}
+            onClick={() => handleProcess(isLastVideo ? 'video-reset' : !isPlaying ? 'play' : 'pause')}
+          />
         </button>
       </div>
     </>
