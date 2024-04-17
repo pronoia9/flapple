@@ -31,13 +31,6 @@ export const VideoCarousel = () => {
   }, [isEnd, videoId]);
 
   useEffect(() => {
-    if (loadedData.length > 3) {
-      if (!isPlaying) videoRef.current[videoId].pause();
-      else startPlay && videoRef.current[videoId].play();
-    }
-  }, [startPlay, videoId, isPlaying, loadedData]);
-
-  useEffect(() => {
     let currentProgress = 0,
       span = videoSpanRef.current;
 
@@ -80,6 +73,13 @@ export const VideoCarousel = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [videoId, startPlay]);
 
+  useEffect(() => {
+    if (loadedData.length > 3) {
+      if (!isPlaying) videoRef.current[videoId].pause();
+      else startPlay && videoRef.current[videoId].play();
+    }
+  }, [startPlay, videoId, isPlaying, loadedData]);
+
   // vd id is the id for every video until id becomes number 3
   const handleProcess = (type, i) => {
     switch (type) {
@@ -121,7 +121,7 @@ export const VideoCarousel = () => {
                   muted
                   onPlay={() => void setVideo((prev) => ({ ...prev, isPlaying: true }))}
                   onLoadedMetadata={(e) => handleLoadedMetaData(i, e)}
-                  onEnded={() => handleProcess(i !== 3 ? ('video-end', i) : 'video-last')}
+                  onEnded={() => (i !== 3 ? handleProcess('video-end', i) : handleProcess('video-last'))}
                 >
                   <source src={slide.video} type='video/mp4' />
                 </video>
