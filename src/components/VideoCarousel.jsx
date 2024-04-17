@@ -31,14 +31,30 @@ export const VideoCarousel = () => {
     }
   }, [startPlay, videoId, isPlaying, loadedData]);
 
-  // TODO
   useEffect(() => {
-    const currentProgress = 0;
-    let span = videoSpanRef.current;
+    let currentProgress = 0,
+      span = videoSpanRef.current;
 
     if (span[videoId]) {
       // animate the progress of the video
-      let animation = gsap.to(span[videoId], { onUpdate: () => {}, onComplete: () => {} });
+      let animation = gsap.to(span[videoId], {
+        onUpdate: () => {
+          const progress = Math.ceil(animation.progress() * 100); // get the progress of the video
+
+          if (progress != currentProgress) {
+            currentProgress = progress;
+
+            // set the width of the progress bar
+            gsap.to(videoDivRef.current[videoId], {
+              width: window.innerWidth < 760 ? '10vw' /* mobile */ : window.innerWidth < 1200 ? '10vw' /* tablet */ : '4vw' /* laptop */,
+            });
+
+            // set the background color of the progress bar
+            gsap.to(span[videoId], { width: `${currentProgress}%`, backgroundColor: 'white' });
+          }
+        },
+        onComplete: () => {},
+      });
     }
 
     return () => {};
