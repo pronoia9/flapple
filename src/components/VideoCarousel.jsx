@@ -3,7 +3,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import { useGSAP } from '@gsap/react';
 
-import { hightlightsSlides } from '../constants';
+import { hightlightsSlides } from '../data';
 import { pauseImg, playImg, replayImg } from '../utils';
 
 gsap.registerPlugin(ScrollTrigger);
