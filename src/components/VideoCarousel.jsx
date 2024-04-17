@@ -41,7 +41,14 @@ export const VideoCarousel = () => {
           <div key={slide.id} id='slider' className='sm:pr-20 pr-10'>
             <div className='video-carousel_container'>
               <div className='w-full h-full flex-center rounded-3xl overflow-hidden bg-black'>
-                <video ref={(el) => (videoRef.current[i] = el)} id='video' playsInline preload='auto' muted>
+                <video
+                  id='video'
+                  ref={(el) => (videoRef.current[i] = el)}
+                  playsInline
+                  preload='auto'
+                  muted
+                  onPlay={() => void setVideo((prev) => ({ ...prev, isPlaying: true }))}
+                >
                   <source src={slide.video} type='video/mp4' />
                 </video>
               </div>
