@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
+import gsap from 'gsap';
 
 import { hightlightsSlides } from '../data';
-import gsap from 'gsap';
+import { pauseImg, playImg, replayImg } from '../utils';
 
 export const VideoCarousel = () => {
   const videoRef = useRef([]),
@@ -34,6 +35,8 @@ export const VideoCarousel = () => {
     return () => {};
   }, [videoId, startPlay]);
 
+  const handleProcess = () => {};
+
   return (
     <>
       <div className='flex items-center'>
@@ -65,8 +68,9 @@ export const VideoCarousel = () => {
         ))}
       </div>
 
-      {/* carousel progress + play/pause button */}
+      {/* carousel stuff */}
       <div className='relative flex-center mt-10'>
+        {/* carousel progress */}
         <div className='flex-center py-5 px-7 bg-gray-300 backdrop-blur rounded-full'>
           {videoRef.current.map((_, i) => (
             <span key={`${i}`} ref={(el) => (videoDivRef.current[i] = el)} className='mx-2 w-3 h-3 bg-gray-200 rounded-full relative cursor-pointer'>
@@ -74,6 +78,11 @@ export const VideoCarousel = () => {
             </span>
           ))}
         </div>
+
+        {/* play/pause button */}
+        <button className='control-btn'>
+          <img src={isLastVideo ? replayImg : !isPlaying ? playImg : pauseImg} alt={isLastVideo ? 'replay' : !isPlaying ? 'play' : 'pause'} onClick={() => handleProcess(isLastVideo ? 'video-reset' : !isPlaying ? 'play' : 'pause')} />
+        </button>
       </div>
     </>
   );
