@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 
 import { hightlightsSlides } from '../data';
 import { pauseImg, playImg, replayImg } from '../utils';
@@ -21,6 +22,14 @@ export const VideoCarousel = () => {
       else startPlay && videoRef.current[videoId].play();
     }
   }, [startPlay, videoId, isPlaying, loadedData]);
+
+  useGSAP(() => {
+    // video animation to play the video when it is in the view
+    gsap.to('#video', {
+      scrollTrigger: { trigger: '#video', toggleActions: 'restart none none none' },
+      onComplete: () => void setVideo((prev) => ({ ...prev, startPlay: true, isPlaying: true })),
+    });
+  }, [isEnd, videoId]);
 
   // TODO
   useEffect(() => {
