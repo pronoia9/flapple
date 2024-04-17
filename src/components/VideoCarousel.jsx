@@ -1,9 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/all';
 import { useGSAP } from '@gsap/react';
 
 import { hightlightsSlides } from '../data';
 import { pauseImg, playImg, replayImg } from '../utils';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export const VideoCarousel = () => {
   const videoRef = useRef([]),
