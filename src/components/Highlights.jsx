@@ -19,14 +19,17 @@ export const Highlights = () => {
           </h1>
 
           <div className='flex flex-wrap items-end gap-5'>
-            <p className='link'>
+            <a className='link' href='#' alt='film'>
               Watch the film
               <img src={watchImg} alt='watch' className='ml-2' />
-            </p>
-            <p className='link'>
+            </a>
+            <a
+              className='link'
+              href='https://www.apple.com/105/media/us/iphone/2023/6b9c38c9-8f1a-4df1-9c02-5b45b7531401/films/guided-tour/iphone-guided-tour-tpl-us-2023_16x9.m3u8' alt='event' target='_blank'
+            >
               Watch the event
               <img src={rightImg} alt='right' className='ml-2' />
-            </p>
+            </a>
           </div>
         </div>
 
