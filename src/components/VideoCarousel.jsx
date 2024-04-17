@@ -3,7 +3,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import { useGSAP } from '@gsap/react';
 
-import { hightlightsSlides } from '../data';
+import { hightlightsSlides } from '../constants';
 import { pauseImg, playImg, replayImg } from '../utils';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -39,7 +39,7 @@ export const VideoCarousel = () => {
       span = videoSpanRef.current;
 
     if (span[videoId]) {
-      // animate the progress of the video
+      // animation to move the indicator
       let animation = gsap.to(span[videoId], {
         onUpdate: () => {
           const progress = Math.ceil(animation.progress() * 100); // get the progress of the video
@@ -74,10 +74,9 @@ export const VideoCarousel = () => {
       if (isPlaying) gsap.ticker.add(animationUpdate); // ticker to update the progress bar
       else gsap.ticker.remove(animationUpdate); // remove the ticker when the video is paused (progress bar is stopped)
     }
-
-    return () => {};
   }, [videoId, startPlay]);
 
+  // vd id is the id for every video until id becomes number 3
   const handleProcess = (type, i) => {
     switch (type) {
       case 'video-end':
@@ -141,7 +140,7 @@ export const VideoCarousel = () => {
         {/* carousel progress */}
         <div className='flex-center py-5 px-7 bg-gray-300 backdrop-blur rounded-full'>
           {videoRef.current.map((_, i) => (
-            <span key={`${i}`} ref={(el) => (videoDivRef.current[i] = el)} className='mx-2 w-3 h-3 bg-gray-200 rounded-full relative cursor-pointer'>
+            <span key={i} ref={(el) => (videoDivRef.current[i] = el)} className='mx-2 w-3 h-3 bg-gray-200 rounded-full relative cursor-pointer'>
               <span ref={(el) => (videoSpanRef.current[i] = el)} className='absolute h-full w-full rounded-full' />
             </span>
           ))}
