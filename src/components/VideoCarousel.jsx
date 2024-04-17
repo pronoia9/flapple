@@ -1,6 +1,13 @@
+import { useRef, useState } from 'react';
+
 import { hightlightsSlides } from '../data';
 
 export const VideoCarousel = () => {
+  const videoRef = useRef([]),
+    videoSpanRef = useRef([]),
+    videoDivRef = useRef([]);
+  const [video, setVideo] = useState({ videoId: 0, isPlaying: false, isEnd: false, isLastVideo: false, startPlay: false });
+
   return (
     <>
       <div className='flex items-center'>
