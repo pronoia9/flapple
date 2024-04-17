@@ -20,6 +20,9 @@ export const VideoCarousel = () => {
   const { videoId, isPlaying, isEnd, isLastVideo, startPlay } = video;
 
   useGSAP(() => {
+    // slider animation to move the video out of the screen and playing the next video
+    gsap.to('#slider', { transform: `translateX(${-100 * videoId}%)`, duration: 2, ease: 'power2.inOut' });
+
     // video animation to play the video when it is in the view
     gsap.to('#video', {
       scrollTrigger: { trigger: '#video', toggleActions: 'restart none none none' },
