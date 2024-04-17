@@ -62,6 +62,14 @@ export const VideoCarousel = () => {
           }
         },
       });
+
+      if (videoId == 0) animation.restart();
+
+      // update the progress bar
+      const animationUpdate = () => void animation.progress(videoRef.current[videoId].currentTime / hightlightsSlides[videoId].videoDuration);
+
+      if (isPlaying) gsap.ticker.add(animationUpdate); // ticker to update the progress bar
+      else gsap.ticker.remove(animationUpdate); // remove the ticker when the video is paused (progress bar is stopped)
     }
 
     return () => {};
