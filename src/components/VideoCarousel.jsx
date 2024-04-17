@@ -53,7 +53,14 @@ export const VideoCarousel = () => {
             gsap.to(span[videoId], { width: `${currentProgress}%`, backgroundColor: 'white' });
           }
         },
-        onComplete: () => {},
+
+        // when the video is ended, replace the progress bar with the indicator and change the background color
+        onComplete: () => {
+          if (isPlaying) {
+            gsap.to(videoDivRef.current[videoId], { width: '12px' });
+            gsap.to(span[videoId], { backgroundColor: '#afafaf' });
+          }
+        },
       });
     }
 
