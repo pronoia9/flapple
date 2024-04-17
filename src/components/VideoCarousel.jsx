@@ -115,6 +115,7 @@ export const VideoCarousel = () => {
                   muted
                   onPlay={() => void setVideo((prev) => ({ ...prev, isPlaying: true }))}
                   onLoadedMetadata={(e) => handleLoadedMetaData(i, e)}
+                  onEnded={() => handleProcess(i !== 3 ? ('video-end', i) : 'video-last')}
                 >
                   <source src={slide.video} type='video/mp4' />
                 </video>
