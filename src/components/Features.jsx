@@ -51,7 +51,7 @@ export const Features = () => {
             </div>
 
             {/* images */}
-            <div className='flex flex-col w-full relative'>
+            <div className='flex flex-col w-full relative gap-5'>
               <div className='feature-video-container'>
                 <div className='overflow-hidden flex-1 h-[50vh]'>
                   <img className='feature-video g_grow' src={explore1Img} alt='titanium' />
