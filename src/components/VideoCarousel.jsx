@@ -1,12 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/all';
 import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
 
 import { hightlightsSlides } from '../data';
-import { pauseImg, playImg, replayImg } from '../utils';
-
-gsap.registerPlugin(ScrollTrigger);
+import { animateWithGsap, pauseImg, playImg, replayImg } from '../utils';
 
 export const VideoCarousel = () => {
   const videoRef = useRef([]),
@@ -24,10 +21,11 @@ export const VideoCarousel = () => {
     gsap.to('#slider', { transform: `translateX(${-100 * videoId}%)`, duration: 2, ease: 'power2.inOut' });
 
     // video animation to play the video when it is in the view
-    gsap.to('#video', {
-      scrollTrigger: { trigger: '#video', toggleActions: 'restart none none none' },
-      onComplete: () => void setVideo((prev) => ({ ...prev, startPlay: true, isPlaying: true })),
-    });
+    animateWithGsap(
+      '#video',
+      { onComplete: () => void setVideo((prev) => ({ ...prev, startPlay: true, isPlaying: true })) },
+      { toggleActions: 'restart none none none' }
+    );
   }, [isEnd, videoId]);
 
   useEffect(() => {
@@ -70,7 +68,7 @@ export const VideoCarousel = () => {
       if (isPlaying) gsap.ticker.add(animationUpdate); // ticker to update the progress bar
       else gsap.ticker.remove(animationUpdate); // remove the ticker when the video is paused (progress bar is stopped)
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [videoId, startPlay]);
 
   useEffect(() => {
