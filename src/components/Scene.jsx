@@ -2,9 +2,9 @@ import { Suspense, useRef } from 'react';
 import * as THREE from 'three';
 import { OrbitControls, PerspectiveCamera, View } from '@react-three/drei';
 
-import { IPhone, Lights, Loader } from '../components';
+import { IPhone, Lights, Loader } from '.';
 
-export const ModelView = ({ index, groupRef, gsapType, controlRef, setRotation, item, size }) => {
+export const Scene = ({ index, groupRef, gsapType, controlRef, setRotation, item, size }) => {
   return (
     <View id={gsapType} index={index} className={`w-full h-full absolute ${index === 2 ? 'right-[-100%]' : ''}`}>
       {/* camera */}

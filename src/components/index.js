@@ -7,8 +7,8 @@ import { HowItWorks } from './HowItWorks';
 import { IPhone } from './IPhone';
 import { Lights } from './Lights';
 import { Loader } from './Loader';
-import { ModelView } from './ModelView';
 import { Navbar } from './Navbar';
+import { Scene } from './Scene';
 import { VideoCarousel } from './VideoCarousel';
 
-export { Experience, Features, Footer, Hero, Highlights, HowItWorks, IPhone, Lights, Loader, ModelView, Navbar, VideoCarousel };
+export { Experience, Features, Footer, Hero, Highlights, HowItWorks, IPhone, Lights, Loader, Navbar, Scene, VideoCarousel };

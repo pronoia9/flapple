@@ -5,7 +5,7 @@ import * as THREE from 'three';
 import { Canvas } from '@react-three/fiber';
 import { View } from '@react-three/drei';
 
-import { ModelView } from '../components';
+import { Scene } from '../components';
 import { models, sizes } from '../data';
 import { yellowImg } from '../utils';
 
@@ -41,7 +41,7 @@ export const Experience = () => {
         <div className='flex flex-col items-center mt-5'>
           <div className='w-full h-[75vh] md:h-[90vh] overflow-hidden relative'>
             {['pro', 'pro max'].map((_, i) => (
-              <ModelView
+              <Scene
                 key={`model-${_}`}
                 index={1}
                 groupRef={_ === 'pro' ? small : large}
