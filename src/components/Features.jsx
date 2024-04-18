@@ -2,7 +2,6 @@ import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 
 import { animateWithGsap, explore1Img, explore2Img, exploreVideo } from '../utils';
-import gsap from 'gsap';
 
 export const Features = () => {
   const videoRef = useRef();
