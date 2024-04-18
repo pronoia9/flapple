@@ -1,7 +1,7 @@
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 
-import { animateWithGsap, chipImg } from '../utils';
+import { animateWithGsap, chipImg, frameImg } from '../utils';
 
 export const HowItWorks = () => {
   useGSAP(() => {
@@ -28,6 +28,14 @@ export const HowItWorks = () => {
           </h2>
 
           <p className='hiw-subtitle'>It's here. The biggest redesign in the history of Apple GPUs.</p>
+        </div>
+
+        <div className='mt-10 md:mt-20 mb-14'>
+          <div className='relative h-full flex-center'>
+            <div className='overflow-hidden'>
+              <img className='bg-transparent relative z-10' src={frameImg} alt='frame' />
+            </div>
+          </div>
         </div>
       </div>
     </section>
