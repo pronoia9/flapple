@@ -42,7 +42,7 @@ export const Features = () => {
             <h2 className='text-5xl lg:text-7xl font-semibold'>Forged in titanium.</h2>
           </div>
 
-          <div className='flex-center flex-col sm:px-10'>
+          <div className='flex-center flex-col sm:px-10 gap-5'>
             {/* video */}
             <div className='relative h-[50vh] w-full flex items-center'>
               <video id='exploreVideo' ref={videoRef} className='w-full h-full object-cover object-center' preload='none' playsInline muted autoPlay>
@@ -51,7 +51,7 @@ export const Features = () => {
             </div>
 
             {/* images */}
-            <div className='flex flex-col w-full relative gap-5'>
+            <div className='flex flex-col w-full relative'>
               <div className='feature-video-container'>
                 <div className='overflow-hidden flex-1 h-[50vh]'>
                   <img className='feature-video g_grow' src={explore1Img} alt='titanium' />
