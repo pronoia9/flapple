@@ -6,7 +6,7 @@ import { Canvas } from '@react-three/fiber';
 import { View } from '@react-three/drei';
 
 import { ModelView } from '../components';
-import { models } from '../data';
+import { models, sizes } from '../data';
 import { yellowImg } from '../utils';
 
 export const Model = () => {
@@ -66,16 +66,31 @@ export const Model = () => {
             <p className='text-sm font-light text-center mb-5'>{model.title}</p>
 
             <div className='flex-center'>
+              {/* color picker */}
               <ul className='color-container'>
-                {models.map((item, i) => (
+                {models.map((c, i) => (
                   <li
-                    key={`models-${i}`}
+                    key={`models-color-${i}`}
                     className='w-6 h-6 rounded-full mx-2 cursor-pointer'
-                    style={{ backgroundColor: item.color[0] }}
-                    onClick={() => setModel(item)}
+                    style={{ backgroundColor: c.color[0] }}
+                    onClick={() => setModel(c)}
                   />
                 ))}
               </ul>
+
+              {/* size picker */}
+              <button className='size-btn-container'>
+                {sizes.map(({ label, value }) => (
+                  <span
+                    key={`models-size-${label}`}
+                    className='size-btn'
+                    style={{ backgroundColor: size === value ? 'white' : 'transparent', color: size === value ? 'black' : 'white' }}
+                    onClick={() => setSize(value)}
+                  >
+                    {label}
+                  </span>
+                ))}
+              </button>
             </div>
           </div>
         </div>
