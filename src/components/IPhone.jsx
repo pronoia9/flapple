@@ -10,7 +10,7 @@ import React, { useRef } from 'react';
 import { useGLTF } from '@react-three/drei';
 
 export const IPhone = (props) => {
-  const { nodes, materials } = useGLTF('/assets/scene.glb');
+  const { nodes, materials } = useGLTF('/assets/models/scene.glb');
   return (
     <group {...props} dispose={null}>
       <mesh castShadow receiveShadow geometry={nodes.ttmRoLdJipiIOmf.geometry} material={materials.hUlRcbieVuIiOXG} scale={0.01} />
