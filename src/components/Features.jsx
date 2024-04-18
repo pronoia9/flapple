@@ -18,7 +18,7 @@ export const Features = () => {
     // images
     animateWithGsap('.g_grow', { scale: 1, opacity: 1, ease: 'power1' }, { scrub: 5.5 });
     // subtitles
-    animateWithGsap('.g_text', { y: 0, opacity: 1, ease: 'power2.inOut', duration: 1 });
+    animateWithGsap('.g_text', { y: 0, opacity: 1, ease: 'power2.inOut', duration: 1, stagger: 0.5 });
   }, []);
 
   return (
