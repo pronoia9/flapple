@@ -9,7 +9,7 @@ import { ModelView } from '../components';
 import { models, sizes } from '../data';
 import { yellowImg } from '../utils';
 
-export const Model = () => {
+export const Experience = () => {
   const [size, setSize] = useState('small'),
     [model, setModel] = useState({
       title: 'iPhone 15 Pro in Natural Titanium',

@@ -1,6 +1,6 @@
 import * as Sentry from '@sentry/react';
 
-import { Features, Footer, Hero, Highlights, HowItWorks, Model, Navbar } from './components';
+import { Experience, Features, Footer, Hero, Highlights, HowItWorks, Navbar } from './components';
 
 // eslint-disable-next-line react-refresh/only-export-components
 export default Sentry.withProfiler(() => (
@@ -8,7 +8,7 @@ export default Sentry.withProfiler(() => (
     <Navbar />
     <Hero />
     <Highlights />
-    <Model />
+    <Experience />
     <Features />
     <HowItWorks />
     <Footer />
