@@ -7,7 +7,12 @@ import './index.css';
 
 Sentry.init({
   dsn: 'https://ea1fe02b0e60f4c82368ac1ee4f7277e@o4507109025054720.ingest.us.sentry.io/4507109030756352',
-  integrations: [Sentry.browserTracingIntegration(), Sentry.replayIntegration()],
+  integrations: [
+    Sentry.browserTracingIntegration(),
+    Sentry.metrics.metricsAggregatorIntegration(),
+    Sentry.reactRouterV6BrowserTracingIntegration({ useEffect: React.useEffect }),
+    Sentry.replayIntegration(),
+  ],
   // Performance Monitoring
   tracesSampleRate: 1.0, //  Capture 100% of the transactions
   // Set 'tracePropagationTargets' to control for which URLs distributed tracing should be enabled
