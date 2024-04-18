@@ -1,9 +1,12 @@
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 
-import { animateWithGsap, chipImg, frameImg } from '../utils';
+import { animateWithGsap, chipImg, frameImg, frameVideo } from '../utils';
+import { useRef } from 'react';
 
 export const HowItWorks = () => {
+  const videoRef = useRef();
+
   useGSAP(() => {
     gsap.from('#chip', {
       opacity: 0,
@@ -32,10 +35,18 @@ export const HowItWorks = () => {
 
         <div className='mt-10 md:mt-20 mb-14'>
           <div className='relative h-full flex-center'>
+            {/* frame */}
             <div className='overflow-hidden'>
               <img className='bg-transparent relative z-10' src={frameImg} alt='frame' />
             </div>
+            {/* video */}
+            <div className='hiw-video'>
+              <video ref={videoRef} className='pointer-events-none' playsInline preload='none' muted autoPlay>
+                <source src={frameVideo} type='video/mp4' />
+              </video>
+            </div>
           </div>
+          <p className='text-gray font-semibold text-center mt-3'>Honkai: Star Rail</p>
         </div>
       </div>
     </section>
