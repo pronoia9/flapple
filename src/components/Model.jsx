@@ -6,10 +6,30 @@ Source: https://sketchfab.com/3d-models/apple-iphone-15-pro-max-black-df17520841
 Title: Apple iPhone 15 Pro Max Black
 */
 
-import { useGLTF } from '@react-three/drei';
+import { useEffect } from 'react';
+import { useGLTF, useTexture } from '@react-three/drei';
+import { Color } from 'three';
 
-export const IPhone = (props) => {
+export const Model = (props) => {
   const { nodes, materials } = useGLTF('/assets/models/scene.glb');
+  const texture = useTexture(props.item.img);
+
+  useEffect(() => {
+    Object.entries(materials).map((material) => {
+      // these are the material names that can't be changed color
+      if (
+        material[0] !== 'zFdeDaGNRwzccye' &&
+        material[0] !== 'ujsvqBWRMnqdwPx' &&
+        material[0] !== 'hUlRcbieVuIiOXG' &&
+        material[0] !== 'jlzuBkUzuJqgiAK' &&
+        material[0] !== 'xNrofRCqOXXHVZt'
+      )
+        material[1].color = new Color(props.item.color[0]);
+
+      material[1].needsUpdate = true;
+    });
+  }, [materials, props.item]);
+
   return (
     <group {...props} dispose={null}>
       <mesh castShadow receiveShadow geometry={nodes.ttmRoLdJipiIOmf.geometry} material={materials.hUlRcbieVuIiOXG} scale={0.01} />
@@ -27,7 +47,9 @@ export const IPhone = (props) => {
       <mesh castShadow receiveShadow geometry={nodes.CfghdUoyzvwzIum.geometry} material={materials.jpGaQNgTtEGkTfo} scale={0.01} />
       <mesh castShadow receiveShadow geometry={nodes.DjdhycfQYjKMDyn.geometry} material={materials.ujsvqBWRMnqdwPx} scale={0.01} />
       <mesh castShadow receiveShadow geometry={nodes.usFLmqcyrnltBUr.geometry} material={materials.sxNzrmuTqVeaXdg} scale={0.01} />
-      <mesh castShadow receiveShadow geometry={nodes.xXDHkMplTIDAXLN.geometry} material={materials.pIJKfZsazmcpEiU} scale={0.01} />
+      <mesh castShadow receiveShadow geometry={nodes.xXDHkMplTIDAXLN.geometry} material={materials.pIJKfZsazmcpEiU} scale={0.01}>
+        <meshStandardMaterial roughness={1} map={texture} />
+      </mesh>
       <mesh castShadow receiveShadow geometry={nodes.vELORlCJixqPHsZ.geometry} material={materials.zFdeDaGNRwzccye} scale={0.01} />
       <mesh castShadow receiveShadow geometry={nodes.EbQGKrWAqhBHiMv.geometry} material={materials.TBLSREBUyLMVtJa} scale={0.01} />
       <mesh castShadow receiveShadow geometry={nodes.EddVrWkqZTlvmci.geometry} material={materials.xNrofRCqOXXHVZt} scale={0.01} />
@@ -45,6 +67,6 @@ export const IPhone = (props) => {
       <mesh castShadow receiveShadow geometry={nodes.rqgRAGHOwnuBypi.geometry} material={materials.HGhEhpqSBZRnjHC} scale={0.01} />
     </group>
   );
-}
+};
 
 useGLTF.preload('/assets/models/scene.glb');
