@@ -11,13 +11,8 @@ export const Features = () => {
     // video
     animateWithGsap(
       '#exploreVideo',
-      {
-        onComplete: () => void videoRef.current.play(),
-      },
-      {
-        toggleActions: 'play pause reverse restart',
-        start: '-10% bottom',
-      }
+      { onComplete: () => void videoRef.current.play() },
+      { toggleActions: 'play pause reverse restart', start: '-10% bottom' }
     );
     // title
     animateWithGsap('#features_title', { y: 0, opacity: 1 });
