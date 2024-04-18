@@ -5,6 +5,8 @@ import * as THREE from 'three';
 
 import { ModelView } from '../components';
 import { yellowImg } from '../utils';
+import { Canvas } from '@react-three/fiber';
+import { View } from '@react-three/drei';
 
 export const Model = () => {
   const [size, setSize] = useState('small'),
@@ -14,13 +16,13 @@ export const Model = () => {
       img: yellowImg,
     });
 
-  // camera control for the model
+  // camera control for the model view
   const cameraControlSmall = useRef(),
     cameraControlLarge = useRef();
   // models
   const small = useRef(new THREE.Group()),
     large = useRef(new THREE.Group());
-  // rotation
+  // rotation for models
   const [smallRotation, setSmallRotation] = useState(0),
     [largeRotation, setLargeRotation] = useState(0);
 
@@ -37,7 +39,22 @@ export const Model = () => {
 
         <div className='flex flex-col items-center mt-5'>
           <div className='w-full h-[75vh] md:h-[90vh] overflow-hidden relative'>
-            <ModelView />
+            {['pro', 'pro max'].map((_, i) => (
+              <ModelView
+                key={`model-${_}`}
+                index={1}
+                groupRef={_ === 'pro' ? small : large}
+                gsapType='view1'
+                controlRef={_ === 'pro' ? cameraControlSmall : cameraControlLarge}
+                setRotation={_ === 'pro' ? setSmallRotation : setLargeRotation}
+                item={model}
+                size={size}
+              />
+            ))}
+
+            <Canvas className='w-full h-full'>
+              <View.Port />
+            </Canvas>
           </div>
         </div>
       </div>
