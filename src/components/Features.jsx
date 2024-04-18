@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 
-import { animateWithGsap, exploreVideo } from '../utils';
+import { animateWithGsap, explore1Img, explore2Img, exploreVideo } from '../utils';
 
 export const Features = () => {
   const videoRef = useRef();
@@ -26,10 +26,23 @@ export const Features = () => {
           </div>
 
           <div className='flex-center flex-col sm:px-10'>
+            {/* video */}
             <div className='relative h-[50vh] w-full flex items-center'>
               <video id='exploreVideo' ref={videoRef} className='w-full h-full object-cover object-center' preload='none' playsInline muted autoPlay>
                 <source src={exploreVideo} type='video/mp4' />
               </video>
+            </div>
+
+            {/* images */}
+            <div className='flex flex-col w-full relative'>
+              <div className='feature-video-container'>
+                <div className='overflow-hidden flex-1 h-[50vh]'>
+                  <img src={explore1Img} alt='titanium' className='feature-video g_grow' />
+                </div>
+                <div className='overflow-hidden flex-1 h-[50vh]'>
+                  <img src={explore2Img} alt='titanium 2' className='feature-video g_grow' />
+                </div>
+              </div>
             </div>
           </div>
         </div>
