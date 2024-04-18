@@ -40,18 +40,21 @@ export const Experience = () => {
 
         <div className='flex flex-col items-center mt-5'>
           <div className='w-full h-[75vh] md:h-[90vh] overflow-hidden relative'>
-            {['pro', 'pro max'].map((_, i) => (
-              <Scene
-                key={`model-${_}`}
-                index={1}
-                groupRef={_ === 'pro' ? small : large}
-                gsapType='view1'
-                controlRef={_ === 'pro' ? cameraControlSmall : cameraControlLarge}
-                setRotation={_ === 'pro' ? setSmallRotation : setLargeRotation}
-                item={model}
-                size={size}
-              />
-            ))}
+            {['pro', 'pro max'].map((_, i) => {
+              const first = _ === 'pro';
+              return (
+                <Scene
+                  key={`model-${_}`}
+                  index={first ? 1 : 2}
+                  groupRef={first ? small : large}
+                  gsapType={`view${first ? 1 : 2}`}
+                  controlRef={first ? cameraControlSmall : cameraControlLarge}
+                  setRotation={first ? setSmallRotation : setLargeRotation}
+                  item={model}
+                  size={size}
+                />
+              );
+            })}
 
             <Canvas
               className='w-full h-full'
