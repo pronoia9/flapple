@@ -2,7 +2,7 @@ import { Suspense, useRef } from 'react';
 import * as THREE from 'three';
 import { OrbitControls, PerspectiveCamera, View } from '@react-three/drei';
 
-import { IPhone, Lights, Loader } from '.';
+import { Model, Lights, Loader } from '.';
 
 export const Scene = ({ index, groupRef, gsapType, controlRef, setRotation, item, size }) => {
   return (
@@ -28,7 +28,7 @@ export const Scene = ({ index, groupRef, gsapType, controlRef, setRotation, item
       {/* model */}
       <group ref={groupRef} name={`iphone pro${index === 1} ? '' : ' max`} position={[0, 0, 0]}>
         <Suspense fallback={<Loader />}>
-          <IPhone scale={index === 1 ? [15, 15, 15] : [17, 17, 17]} item={item} size={size} />
+          <Model scale={index === 1 ? [15, 15, 15] : [17, 17, 17]} item={item} size={size} />
         </Suspense>
       </group>
     </View>
