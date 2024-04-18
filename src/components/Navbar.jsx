@@ -9,7 +9,7 @@ export const Navbar = () => {
           <img src={appleImg} alt='logo' width={14} height={18} />
         </div>
 
-        <div className='grow flex justify-between items-center max-md:hidden'>
+        <div className='grow flex justify-evenly items-center max-md:hidden'>
           {navLists.map((nav, index) => (
             <a key={`nav-${index}`} href={nav.link} className='text-sm text-gray hover:text-white transition-all'>
               {nav.title}
