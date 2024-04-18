@@ -2,11 +2,23 @@ import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 
 import { animateWithGsap, explore1Img, explore2Img, exploreVideo } from '../utils';
+import gsap from 'gsap';
 
 export const Features = () => {
   const videoRef = useRef();
 
   useGSAP(() => {
+    // video
+    animateWithGsap(
+      '#exploreVideo',
+      {
+        onComplete: () => void videoRef.current.play(),
+      },
+      {
+        toggleActions: 'play pause reverse restart',
+        start: '-10% bottom',
+      }
+    );
     // title
     animateWithGsap('#features_title', { y: 0, opacity: 1 });
     // images
